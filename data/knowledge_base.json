@@ -1,0 +1,52 @@
+[
+  {
+    "title": "What Is Python",
+    "category": "python-basics",
+    "content": "Python is a high-level programming language designed to emphasize readability and developer productivity. It is commonly used for web development, automation, data work, machine learning, and scripting."
+  },
+  {
+    "title": "Variables",
+    "category": "python-basics",
+    "content": "A variable is a name that refers to a value in your program. Variables let you store data so you can reuse it, update it, and reason about your code more clearly."
+  },
+  {
+    "title": "Loops",
+    "category": "control-flow",
+    "content": "A loop repeats a block of code. In Python, for loops are commonly used to iterate through items in a sequence, while while loops repeat as long as a condition stays true."
+  },
+  {
+    "title": "What Is A Function",
+    "category": "functions",
+    "content": "A function is a reusable block of code that performs a specific task. Functions help reduce repetition, improve readability, and make programs easier to test."
+  },
+  {
+    "title": "Lists And List Comprehensions",
+    "category": "python-basics",
+    "content": "A list stores an ordered collection of values. A list comprehension is a compact way to build a new list by iterating through an existing iterable and optionally filtering items. Use a normal loop when readability or multiple steps matter more than brevity."
+  },
+  {
+    "title": "For Loops Versus While Loops",
+    "category": "control-flow",
+    "content": "Use a for loop when iterating over a known sequence such as a list, string, or range. Use a while loop when repetition depends on a condition that changes over time. Always make sure the while loop updates state so it can terminate."
+  },
+  {
+    "title": "Functions And Parameters",
+    "category": "functions",
+    "content": "Functions package behavior into reusable blocks. Parameters are placeholders for input values. Prefer clear function names, focused responsibilities, and explicit return values so code is easier to test and reason about."
+  },
+  {
+    "title": "Debugging TypeError",
+    "category": "debugging",
+    "content": "TypeError usually means an operation was applied to the wrong kind of value. Inspect the actual runtime type with print or type(), then verify what each variable contains before the failing line. Beginners often mix strings and integers."
+  },
+  {
+    "title": "Dictionaries",
+    "category": "data-structures",
+    "content": "A dictionary stores key-value pairs. It is useful when you need fast lookup by a meaningful key, such as mapping a username to profile data. Access values with square brackets or use get() when a missing key is possible."
+  },
+  {
+    "title": "Writing Clean Beginner Python",
+    "category": "engineering",
+    "content": "Write code that is easy to read first. Use descriptive variable names, avoid deeply nested logic, break problems into functions, and test small pieces independently. Simple code is easier to debug than clever code."
+  }
+]

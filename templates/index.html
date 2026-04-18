@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PyForge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <div class="page-scroll">
+      <div class="page-shell">
+        <aside class="sidebar">
+          <div>
+            <p class="eyebrow">PyForge</p>
+            <h1>Developer learning assistant</h1>
+            <p class="lede">
+              Domain-specific AI for Python learning, technical notes, and code understanding.
+            </p>
+          </div>
+
+          <section class="panel">
+            <h2>System Status</h2>
+            <ul class="status-list">
+              <li>Flask app scaffolded</li>
+              <li>Session chat history enabled</li>
+              <li>Retrieval pipeline not wired yet</li>
+            </ul>
+          </section>
+
+          <section class="panel">
+            <h2>Roadmap</h2>
+            <p>
+              Next: retrieval, answer orchestration, generation controls, and model comparison.
+            </p>
+          </section>
+        </aside>
+
+        <main class="workspace">
+          <header class="workspace-header">
+            <div>
+              <p class="eyebrow">Prototype</p>
+              <h2>Chat Console</h2>
+            </div>
+
+            <!-- This posts to /reset, which clears the session-backed chat state. -->
+            <form method="post" action="{{ url_for('main.reset') }}">
+              <button class="secondary-button" type="submit">Clear Chat</button>
+            </form>
+          </header>
+
+          <section class="chat-log">
+            <!-- Chat history is rendered from Flask session data. -->
+            {% if history %}
+              {% for item in history %}
+                <article class="message message-{{ item.role }}">
+                  <p class="message-role">{{ item.role }}</p>
+                  <p>{{ item.content }}</p>
+                </article>
+              {% endfor %}
+            {% else %}
+              <article class="empty-state">
+                <h3>Start with a Python question</h3>
+                <p>
+                  Example: "Explain list comprehensions versus loops and show a beginner-friendly example."
+                </p>
+              </article>
+            {% endif %}
+          </section>
+
+          <!-- The main composer posts back to the same "/" route. Flask handles the
+               form, updates session state, then re-renders this template. -->
+          <form class="composer" method="post" autocomplete="off">
+            <label class="sr-only" for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              placeholder="Ask PyForge about Python, debugging, syntax, or study notes..."
+              autocomplete="off"
+              autocorrect="off"
+              autocapitalize="off"
+              spellcheck="false"
+              required
+            ></textarea>
+            <div class="composer-actions">
+              <p>Retrieval and model controls will live here in the next iteration.</p>
+              <button class="primary-button" type="submit">Send</button>
+            </div>
+          </form>
+
+          <section class="sources-panel">
+            <!-- Retrieved sources make the system inspectable instead of opaque. -->
+            <!-- That matters for trust: the user can see what the answer was based on. -->
+            <div class="sources-header">
+              <div>
+                <p class="eyebrow">Grounding</p>
+                <h3>Retrieved Sources</h3>
+              </div>
+            </div>
+
+            {% if sources %}
+              <div class="source-grid">
+                {% for source in sources %}
+                  <article class="source-card">
+                    <p class="source-category">{{ source.category }}</p>
+                    <h4>{{ source.title }}</h4>
+                    <p class="source-score">match score: {{ source.score }}</p>
+                    <p>{{ source.content }}</p>
+                  </article>
+                {% endfor %}
+              </div>
+            {% else %}
+              <p class="sources-empty">
+                No sources retrieved yet. Ask a Python question to inspect how grounding will work.
+              </p>
+            {% endif %}
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  </body>
+</html>
