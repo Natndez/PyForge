@@ -137,23 +137,93 @@ without rewriting the whole app from scratch.
 
 ## Running Locally
 
-Create a virtual environment, install dependencies, and run the Flask app:
+### 1. Open the project
+
+In a terminal, move into the project folder:
+
+```bash
+cd custom-llm
+```
+
+If you already have the folder open in VS Code, you can use the built-in terminal there.
+
+### 2. Create a virtual environment
+
+This creates a project-local Python environment so dependencies stay isolated from your global Python install:
 
 ```bash
 python3 -m venv .venv
+```
+
+### 3. Activate the virtual environment
+
+On macOS or Linux:
+
+```bash
 source .venv/bin/activate
+```
+
+When activation works, your terminal prompt should start with `(.venv)`.
+
+### 4. Install dependencies
+
+Install the packages listed in `requirements.txt`:
+
+```bash
 PIP_USER=0 python -m pip install --no-user -r requirements.txt
+```
+
+Right now the dependency list is intentionally small because the project is still in its early phases.
+
+### 5. Start the app
+
+For a normal local run:
+
+```bash
 python app.py
+```
+
+Then open this URL in your browser:
+
+`http://127.0.0.1:5000`
+
+### Daily workflow after the first setup
+
+Once `.venv` already exists and dependencies are installed, you usually only need:
+
+```bash
+source .venv/bin/activate
+python app.py
+```
+
+## Troubleshooting Local Run
+
+### Port 5000 is already in use
+
+If you see an error saying port `5000` is already in use, start Flask on another port instead:
+
+```bash
+flask --app app run --debug --port 5001
 ```
 
 Then open:
 
-`http://127.0.0.1:5000`
+`http://127.0.0.1:5001`
 
-If port `5000` is already in use, run Flask on another port:
+### The browser shows a Flask template or import error
+
+Try these checks:
+
+1. Make sure your virtual environment is activated.
+2. Make sure dependencies were installed successfully.
+3. Make sure you are running the command from the project root.
+
+### The app does not reload after code changes
+
+Stop the server with `Ctrl+C`, then start it again:
 
 ```bash
-flask --app app run --debug --port 5001
+python app.py
 ```
 
 ## Project Status
