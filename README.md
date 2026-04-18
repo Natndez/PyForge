@@ -2,10 +2,6 @@
 
 PyForge is a domain-specific AI assistant for Python learning, developer notes, and code understanding.
 
-The goal is not to build a fake "ChatGPT clone." The goal is to build a technically honest AI project that shows how a useful assistant is assembled from smaller parts: a web app, a knowledge base, retrieval logic, answer orchestration, and eventually model-backed generation.
-
-## What We Are Making
-
 PyForge is a Flask web app where a user can ask Python-related questions and receive responses grounded in a curated local knowledge base.
 
 Right now, the app can:
@@ -18,51 +14,14 @@ Right now, the app can:
 
 This makes the current version a small retrieval-backed assistant, not a full language model yet.
 
-## Why We Are Making It
+## Features
 
-This project is meant to be both:
-
-- a tutorial project that teaches the architecture of AI products
-- a portfolio project that can grow into something credible for employers
-
-The important idea behind PyForge is that strong AI projects are not just "prompt in, answer out." They are systems with clear layers:
-
-- a user interface
-- request handling
-- a data source
-- retrieval or context selection
-- answer construction
-- later, model inference and evaluation
-
-By building those layers one at a time, the project stays understandable and technically honest.
-
-## How We Are Making It
-
-We are building PyForge in phases rather than trying to jump straight to a final "AI app."
-
-### Phase 1: Product skeleton
-
-- Flask app setup
-- route handling
-- HTML/CSS UI
-- session-based chat history
-
-### Phase 2: Grounding and retrieval
-
-- local Python knowledge base
-- keyword-based retrieval
-- source cards in the interface
-- grounded answer builder
-
-### Later phases
-
-- better answer formatting
-- embeddings-based retrieval
-- configurable generation settings
-- baseline versus adapted model comparison
-- evaluation scripts and reporting
-
-This phased approach matters because it keeps every step testable and easy to reason about.
+- chat-style interface for Python-related questions
+- retrieval-backed responses grounded in local source material
+- session-based conversation history
+- source inspection panel showing retrieved knowledge chunks
+- keyboard-friendly message composer with Enter-to-send
+- responsive layout with dedicated chat scrolling
 
 ## Current Architecture
 
@@ -117,23 +76,6 @@ When a user submits a question, the app currently works like this:
 This is the current mental model for the whole app:
 
 `user question -> retrieval -> answer builder -> session update -> rendered UI`
-
-## Why The Current Design Is Useful
-
-Even though the current version is simple, it already demonstrates several important engineering ideas:
-
-- separating route logic from backend logic
-- grounding answers in a scoped knowledge base
-- showing sources so answers are inspectable
-- keeping the app modular so retrieval or generation can be upgraded later
-
-That modularity is important. We can later replace:
-
-- keyword retrieval with embeddings
-- the simple answer builder with model-backed generation
-- session storage with a database
-
-without rewriting the whole app from scratch.
 
 ## Running Locally
 
@@ -235,5 +177,3 @@ Current status:
 - retrieval-backed answering is working
 - source inspection is working
 - answer quality is still limited by the small local knowledge base and simple keyword retrieval
-
-In other words: the project foundation is real, but the more advanced AI layers are still ahead.
