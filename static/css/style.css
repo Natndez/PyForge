@@ -219,6 +219,17 @@ h1 {
   background: rgba(15, 23, 42, 0.5);
 }
 
+.composer-controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.control-group {
+  flex: 0 0 25%;
+  min-width: 180px;
+}
+
 .sources-header {
   display: flex;
   justify-content: space-between;
@@ -261,6 +272,47 @@ h1 {
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+}
+
+.composer label {
+  display: block;
+  margin-bottom: 8px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand-soft);
+}
+
+.composer select {
+  width: 100%;
+  display: block;
+  margin-bottom: 14px;
+  padding: 12px 44px 12px 14px;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 14px;
+  font: inherit;
+    color: var(--text);
+    background-color: rgba(15, 23, 42, 0.9);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14' fill='none'%3E%3Cpath d='M3.25 5.25L7 9L10.75 5.25' stroke='%23FDBA74' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 14px;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+@media (max-width: 640px) {
+  .composer select {
+    width: 100%;
+  }
+}
+
+
+.composer select:focus {
+  border-color: rgba(251, 146, 60, 0.7);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
 }
 
 textarea {
@@ -370,5 +422,13 @@ textarea {
   .composer-actions {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .composer-controls {
+    flex-direction: column;
+  }
+
+  .control-group {
+    min-width: 100%;
   }
 }

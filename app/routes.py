@@ -19,10 +19,17 @@ def index():
     if request.method == "POST":
         # request.form contains fields submitted by the HTML form in index.html.
         user_message = request.form.get("message", "").strip()
+        
+        # To control the style of the answer
+        answer_style = request.form.get("answer_style", "balanced")
+        
+        # Top k selection
+        top_k = int(request.form.get("top_k", 3))
+        
         if user_message:
             # Retrieval is the first "AI system" step: find relevant local context.
             # Right now this is keyword overlap against a curated JSON knowledge base.
-            sources = retrieve_sources(user_message, top_k=3)
+            sources = retrieve_sources(user_message, top_k=top_k)
 
             # We store both sides of the conversation so the template can render a
             # chat-like transcript on the next page load.
@@ -32,7 +39,7 @@ def index():
                     "role": "assistant",
                     # The answer builder is intentionally separate from the route.
                     # Routes should coordinate work, not contain all of the logic.
-                    "content": build_answer(user_message, sources),
+                    "content": build_answer(user_message, sources, answer_style),
                 }
             )
             session["history"] = history

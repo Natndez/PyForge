@@ -73,6 +73,26 @@
           <!-- The main composer posts back to the same "/" route. Flask handles the
                form, updates session state, then re-renders this template. -->
           <form class="composer" method="post" autocomplete="off">
+            <div class="composer-controls">
+              <div class="control-group">
+                <label for="answer_style">Answer style</label>
+                <select id="answer_style" name="answer_style">
+                  <option value="balanced" selected>Balanced</option>
+                  <option value="concise">Concise</option>
+                  <option value="explanatory">Explanatory</option>
+                </select>
+              </div>
+
+              <div class="control-group">
+                <label for="top_k">Retrieved sources</label>
+                <select id="top_k" name="top_k">
+                  <option value="1">1 source</option>
+                  <option value="2">2 sources</option>
+                  <option value="3" selected>3 sources</option>
+                </select>
+              </div>
+            </div>
+
             <label class="sr-only" for="message">Message</label>
             <textarea
               id="message"

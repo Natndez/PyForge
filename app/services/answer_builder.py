@@ -48,7 +48,7 @@ def get_teaching_points(primary_source: KnowledgeChunk) -> list[str]:
           "- Understanding the basics well makes more advanced topics easier later.",
       ]
 
-def build_answer(user_message: str, sources: list[RetrievalResult]) -> str:
+def build_answer(user_message: str, sources: list[RetrievalResult], answer_style: str = "balanced") -> str:
     # This is not a true language model yet. It is an orchestration layer that
     # turns retrieved source chunks into a readable answer for the user.
     #
@@ -79,21 +79,24 @@ def build_answer(user_message: str, sources: list[RetrievalResult]) -> str:
             f"The closest source was {primary_source.title}, which says: {primary_source.content}"
         )
         
-    # Open with the strongest matching explanation, then add short teaching points.
-    answer_lines = [
-        primary_source.content,
-        "",
-        "Why it matters:",
-    ]
+    # Begin with the direct explanation from the best available source
+    answer_lines = [primary_source.content]
     
-    # Add topic-aware teaching points based on the type of concept we retrieved
-    answer_lines.extend(get_teaching_points(primary_source))
+    # Rendering different formatting depending on selected response option
+    if answer_style in {"balanced", "explanatory"}:
+        answer_lines.append("")
+        answer_lines.append("Why it matters:")
+        answer_lines.extend(get_teaching_points(primary_source))
     
-    # Supporting sources become related topics the user can explore next
-    if supporting_titles:
+    if answer_style == "explanatory" and supporting_titles:
         answer_lines.append("")
         answer_lines.append("You might also want to explore:")
         for title in supporting_titles.split(", "):
             answer_lines.append(f"- {title}")
+            
+    if answer_style == "concise" and supporting_titles:
+        answer_lines.append("")
+        answer_lines.append(f"Related: {supporting_titles}")
+    
     
     return "\n".join(answer_lines)

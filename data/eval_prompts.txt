@@ -1,0 +1,15 @@
+What is Python?
+What is a variable?
+What is a function?
+What is a class?
+What is a module in Python?
+What is a string?
+What is a dictionary?
+What is a tuple?
+What is a set?
+What is file handling?
+What is an exception?
+How do loops work in Python?
+What is the difference between a for loop and a while loop?
+When should I use a dictionary?
+What is a list comprehension?

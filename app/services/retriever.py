@@ -21,11 +21,14 @@ STOP_WORDS = {
     "a",
     "an",
     "the",
+    "do",
     "is",
     "what",
     "when",
     "why",
     "how",
+    "work",
+    "works",
     "in",
     "on",
     "of",
@@ -33,6 +36,10 @@ STOP_WORDS = {
     "and",
     "or",
 }
+
+# These words are useful alone, but become too broad when the query already
+# contains a more specific concept such as "class" or "loop".
+LOW_SIGNAL_QUERY_TOKENS = {"python"}
 
 
 @dataclass
@@ -105,6 +112,12 @@ def retrieve_sources(query: str, top_k: int = 3) -> list[RetrievalResult]:
     # Convert the incoming question into tokens once, then compare against every
     # knowledge chunk in the local corpus.
     query_tokens = tokenize(query)
+
+    # If the query already contains a more specific concept, treat broad context
+    # words like "python" as low-signal so they do not overpower the real topic.
+    if len(query_tokens) > 1:
+        query_tokens -= LOW_SIGNAL_QUERY_TOKENS
+
     if not query_tokens:
         return []
 
