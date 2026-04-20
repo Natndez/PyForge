@@ -16,6 +16,24 @@ DATA_PATH = Path(__file__).resolve().parents[2] / "data" / "knowledge_base.json"
 # retrieval techniques.
 TOKEN_PATTERN = re.compile(r"[a-zA-Z_]+")
 
+# Ignore very common words to ensure retrieval focuses on actual concepts
+STOP_WORDS = {
+    "a",
+    "an",
+    "the",
+    "is",
+    "what",
+    "when",
+    "why",
+    "how",
+    "in",
+    "on",
+    "of",
+    "to",
+    "and",
+    "or",
+}
+
 
 @dataclass
 class KnowledgeChunk:
@@ -41,19 +59,46 @@ def load_knowledge_base() -> list[KnowledgeChunk]:
 
     return [KnowledgeChunk(**item) for item in raw_items]
 
+def normalize_token(token: str) -> str:
+    # Basic normalization helps singular/plural forms match more often.
+    if token.endswith("ies") and len(token) > 3:
+        return token[:-3] + "y"
+
+    # Handle words like "classes" -> "class".
+    if token.endswith("sses") and len(token) > 4:
+        return token[:-2]
+
+    # Handle simple plurals like "modules" -> "module".
+    if token.endswith("es") and len(token) > 3 and not token.endswith("sses"):
+        return token[:-1]
+
+    # Avoid breaking words like "class" -> "clas".
+    if token.endswith("s") and len(token) > 3 and not token.endswith("ss"):
+        return token[:-1]
+
+    return token
 
 def tokenize(text: str) -> set[str]:
-    # Lowercased word tokens give us a simple, transparent search baseline.
-    # Using a set means repeated words do not inflate the score.
-    return {token.lower() for token in TOKEN_PATTERN.findall(text)}
+    # Lowercase, normalize, and drop weak words so scoring focuses on actual meaning, not grammatical correctness
+    tokens = {
+        normalize_token(token.lower())
+        for token in TOKEN_PATTERN.findall(text)
+    }
+     # Making sure STOP words are not included
+    return {token for token in tokens if token and token not in STOP_WORDS}
 
 
 def score_chunk(query_tokens: set[str], chunk: KnowledgeChunk) -> int:
-    # We score against the title, category, and content so short labels like
-    # "python-basics" can still help retrieval.
-    chunk_tokens = tokenize(f"{chunk.title} {chunk.category} {chunk.content}")
-    # Score by token overlap; later we can swap this for embeddings.
-    return len(query_tokens & chunk_tokens)
+    # Give title matches more weight than category/content matches
+    title_tokens = tokenize(chunk.title)
+    category_tokens = tokenize(chunk.category)
+    content_tokens = tokenize(chunk.content)
+    
+    title_overlap = query_tokens & title_tokens
+    category_overlap = query_tokens & category_tokens
+    content_overlap = query_tokens & content_tokens
+    
+    return (len(title_overlap) * 3) + (len(category_overlap) * 2) + len(content_overlap)
 
 
 def retrieve_sources(query: str, top_k: int = 3) -> list[RetrievalResult]:

@@ -2,55 +2,51 @@ from __future__ import annotations
 
 from app.services.retriever import KnowledgeChunk, RetrievalResult
 
-# build answer helper function
-
 def get_teaching_points(primary_source: KnowledgeChunk) -> list[str]:
-      # Use simple topic-aware bullets so the answer sounds more like a tutor.
-      title = primary_source.title.lower()
-      category = primary_source.category.lower()
-
-      if "python" in title:
-          return [
-              "- Python is popular because it is readable and used in many real-world projects.",
-              "- It is often a strong first language because the syntax is easier to follow than many lower-level languages.",
-          ]
-
-      if "function" in title or category == "functions":
-          return [
-              "- Functions help you organize code into reusable pieces instead of repeating logic.",
-              "- They also make programs easier to test, debug, and understand.",
-          ]
-
-      if "loop" in title or category == "control-flow":
-          return [
-              "- Loops are useful when you need to repeat the same kind of action multiple times.",
-              "- Picking the right loop makes your code shorter and easier to read.",
-          ]
-
-      if "variable" in title:
-          return [
-              "- Variables let you store information so you can reuse it later in your program.",
-              "- Clear variable names make code much easier to read and debug.",
-          ]
-
-      if "dictionary" in title:
-          return [
-              "- Dictionaries are helpful when you want to look up information by a meaningful key.",
-              "- They are extremely common in real Python programs because they make data access fast and]clear.",
-          ]
-
-      if "list" in title:
+    
+    # use topic aware bullet points so the answer sounds more tutorish
+    title = primary_source.title.lower()
+    category = primary_source.category.lower()
+    
+    if "python" in title:
+        return [
+            "- Python is popular because it is readable and used in many real-world projects.",
+            "- It is often a strong first language because the syntax is easier to follow than many lower-level languages",
+        ]
+        
+    if "function" in title or category == "functions":
+        return [
+            "- Functions help organize code into reusable pieces instead of repeating the same logic.",
+            "- They also make programs easier to test, debug, and understand.",
+        ]
+    
+    if "loop" in title or category == "control-flow":
+        return [
+            "- Loops are useful when the same kind of action needs to happen multiple times.",
+            "- Choosing the right loop keeps code shorter and easier to read.",
+        ]
+        
+    if "variable" in title:
+        return [
+            "- Variables let a program store information so it can be reused later.",
+            "- Clear variable names make code easier to read and much easier to debug.",
+        ]
+        
+    if "dictionary" in title:
+        return [
+            "- Dictionaries are helpful when values need to be looked up by a meaningful key.",
+            "- They are one of the most common data structures used in real Python programs.",
+        ]
+    if "list" in title:
           return [
               "- Lists are one of the most common ways to store ordered data in Python.",
-              "- List comprehensions are useful when you want a compact way to build a new list from existing]data.",
+              "- List comprehensions are useful when building a new list from existing data in a compact way.",
           ]
-      return [
+
+    return [
           "- This concept helps build a stronger foundation for writing clear Python code.",
-          "- Understanding the basics well makes harder topics easier later.",
+          "- Understanding the basics well makes more advanced topics easier later.",
       ]
-
-
-
 
 def build_answer(user_message: str, sources: list[RetrievalResult]) -> str:
     # This is not a true language model yet. It is an orchestration layer that
@@ -96,7 +92,7 @@ def build_answer(user_message: str, sources: list[RetrievalResult]) -> str:
     # Supporting sources become related topics the user can explore next
     if supporting_titles:
         answer_lines.append("")
-        answer_lines.append("You might also want to explore")
+        answer_lines.append("You might also want to explore:")
         for title in supporting_titles.split(", "):
             answer_lines.append(f"- {title}")
     

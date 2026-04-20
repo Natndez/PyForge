@@ -48,5 +48,45 @@
     "title": "Writing Clean Beginner Python",
     "category": "engineering",
     "content": "Write code that is easy to read first. Use descriptive variable names, avoid deeply nested logic, break problems into functions, and test small pieces independently. Simple code is easier to debug than clever code."
+  },
+  {
+    "title": "Conditionals",
+    "category": "control-flow",
+    "content": "Conditionals let a program make decisions. In Python, if, elif, and else are used to run different blocks of code depending on whether a condition is true or false."
+  },
+  {
+    "title": "Classes",
+    "category": "object-oriented-programming",
+    "content": "A class is a blueprint for creating objects. Classes let related data and behavior stay grouped together, which is useful for organizing larger programs."
+  },
+  {
+    "title": "Exceptions",
+    "category": "debugging",
+    "content": "An exception is an error that happens while a program is running. Python can raise exceptions when something goes wrong, and try/except blocks can be used to handle them more safely."
+  },
+  {
+    "title": "Modules",
+    "category": "python-basics",
+    "content": "A module is a Python file that contains code such as functions, variables, or classes that can be imported into another file. Modules help organize code and make it reusable."
+  },
+  {
+    "title": "File Handling",
+    "category": "input-output",
+    "content": "File handling is the process of reading from or writing to files. In Python, files are commonly opened with open(), and using a with statement helps ensure they are closed properly."
+  },
+  {
+    "title": "Strings",
+    "category": "python-basics",
+    "content": "A string is a sequence of text characters. Strings are used for things like names, messages, and user input, and Python provides many built-in methods for working with them."
+  },
+  {
+    "title": "Tuples",
+    "category": "data-structures",
+    "content": "A tuple is an ordered collection of values, similar to a list, but tuples are immutable. They are useful when a group of values should not change."
+  },
+  {
+    "title": "Sets",
+    "category": "data-structures",
+    "content": "A set is an unordered collection of unique values. Sets are useful when duplicates should be removed or when checking membership efficiently."
   }
 ]
