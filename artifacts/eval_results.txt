@@ -1,0 +1,216 @@
+PyForge Evaluation Run
+
+================================================================================
+
+Prompt: What is Python?
+--------------------------------------------------------------------------------
+Top sources:
+- What Is Python (score: 6)
+- Writing Clean Beginner Python (score: 3)
+- Modules (score: 3)
+
+Answer:
+Python is a high-level programming language designed to emphasize readability and developer productivity. It is commonly used for web development, automation, data work, machine learning, and scripting.
+
+Why it matters:
+- Python is popular because it is readable and used in many real-world projects.
+- It is often a strong first language because the syntax is easier to follow than many lower-level languages
+================================================================================
+
+Prompt: What is a variable?
+--------------------------------------------------------------------------------
+Top sources:
+- Variables (score: 4)
+- Debugging TypeError (score: 1)
+- Writing Clean Beginner Python (score: 1)
+
+Answer:
+A variable is a name that refers to a value in your program. Variables let you store data so you can reuse it, update it, and reason about your code more clearly.
+
+Why it matters:
+- Variables let a program store information so it can be reused later.
+- Clear variable names make code easier to read and much easier to debug.
+================================================================================
+
+Prompt: What is a function?
+--------------------------------------------------------------------------------
+Top sources:
+- What Is A Function (score: 6)
+- Functions And Parameters (score: 6)
+- Writing Clean Beginner Python (score: 1)
+
+Answer:
+A function is a reusable block of code that performs a specific task. Functions help reduce repetition, improve readability, and make programs easier to test.
+
+Why it matters:
+- Functions help organize code into reusable pieces instead of repeating the same logic.
+- They also make programs easier to test, debug, and understand.
+================================================================================
+
+Prompt: What is a class?
+--------------------------------------------------------------------------------
+Top sources:
+- Classes (score: 4)
+- Modules (score: 1)
+
+Answer:
+A class is a blueprint for creating objects. Classes let related data and behavior stay grouped together, which is useful for organizing larger programs.
+
+Why it matters:
+- This concept helps build a stronger foundation for writing clear Python code.
+- Understanding the basics well makes more advanced topics easier later.
+================================================================================
+
+Prompt: What is a module in Python?
+--------------------------------------------------------------------------------
+Top sources:
+- Modules (score: 4)
+
+Answer:
+A module is a Python file that contains code such as functions, variables, or classes that can be imported into another file. Modules help organize code and make it reusable.
+
+Why it matters:
+- This concept helps build a stronger foundation for writing clear Python code.
+- Understanding the basics well makes more advanced topics easier later.
+================================================================================
+
+Prompt: What is a string?
+--------------------------------------------------------------------------------
+Top sources:
+- Strings (score: 4)
+- For Loops Versus While Loops (score: 1)
+- Debugging TypeError (score: 1)
+
+Answer:
+A string is a sequence of text characters. Strings are used for things like names, messages, and user input, and Python provides many built-in methods for working with them.
+
+Why it matters:
+- This concept helps build a stronger foundation for writing clear Python code.
+- Understanding the basics well makes more advanced topics easier later.
+================================================================================
+
+Prompt: What is a dictionary?
+--------------------------------------------------------------------------------
+Top sources:
+- Dictionaries (score: 4)
+
+Answer:
+A dictionary stores key-value pairs. It is useful when you need fast lookup by a meaningful key, such as mapping a username to profile data. Access values with square brackets or use get() when a missing key is possible.
+
+Why it matters:
+- This concept helps build a stronger foundation for writing clear Python code.
+- Understanding the basics well makes more advanced topics easier later.
+================================================================================
+
+Prompt: What is a tuple?
+--------------------------------------------------------------------------------
+Top sources:
+- Tuples (score: 4)
+
+Answer:
+A tuple is an ordered collection of values, similar to a list, but tuples are immutable. They are useful when a group of values should not change.
+
+Why it matters:
+- This concept helps build a stronger foundation for writing clear Python code.
+- Understanding the basics well makes more advanced topics easier later.
+================================================================================
+
+Prompt: What is a set?
+--------------------------------------------------------------------------------
+Top sources:
+- Sets (score: 4)
+
+Answer:
+A set is an unordered collection of unique values. Sets are useful when duplicates should be removed or when checking membership efficiently.
+
+Why it matters:
+- This concept helps build a stronger foundation for writing clear Python code.
+- Understanding the basics well makes more advanced topics easier later.
+================================================================================
+
+Prompt: What is file handling?
+--------------------------------------------------------------------------------
+Top sources:
+- File Handling (score: 8)
+- Modules (score: 1)
+
+Answer:
+File handling is the process of reading from or writing to files. In Python, files are commonly opened with open(), and using a with statement helps ensure they are closed properly.
+
+Why it matters:
+- This concept helps build a stronger foundation for writing clear Python code.
+- Understanding the basics well makes more advanced topics easier later.
+================================================================================
+
+Prompt: What is an exception?
+--------------------------------------------------------------------------------
+Top sources:
+- Exceptions (score: 4)
+
+Answer:
+An exception is an error that happens while a program is running. Python can raise exceptions when something goes wrong, and try/except blocks can be used to handle them more safely.
+
+Why it matters:
+- This concept helps build a stronger foundation for writing clear Python code.
+- Understanding the basics well makes more advanced topics easier later.
+================================================================================
+
+Prompt: How do loops work in Python?
+--------------------------------------------------------------------------------
+Top sources:
+- Loops (score: 4)
+- For Loops Versus While Loops (score: 4)
+- Lists And List Comprehensions (score: 1)
+
+Answer:
+A loop repeats a block of code. In Python, for loops are commonly used to iterate through items in a sequence, while while loops repeat as long as a condition stays true.
+
+Why it matters:
+- Loops are useful when the same kind of action needs to happen multiple times.
+- Choosing the right loop keeps code shorter and easier to read.
+================================================================================
+
+Prompt: What is the difference between a for loop and a while loop?
+--------------------------------------------------------------------------------
+Top sources:
+- For Loops Versus While Loops (score: 12)
+- Loops (score: 6)
+- What Is Python (score: 1)
+
+Answer:
+Use a for loop when iterating over a known sequence such as a list, string, or range. Use a while loop when repetition depends on a condition that changes over time. Always make sure the while loop updates state so it can terminate.
+
+Why it matters:
+- Loops are useful when the same kind of action needs to happen multiple times.
+- Choosing the right loop keeps code shorter and easier to read.
+================================================================================
+
+Prompt: When should I use a dictionary?
+--------------------------------------------------------------------------------
+Top sources:
+- Dictionaries (score: 5)
+- Lists And List Comprehensions (score: 1)
+- For Loops Versus While Loops (score: 1)
+
+Answer:
+A dictionary stores key-value pairs. It is useful when you need fast lookup by a meaningful key, such as mapping a username to profile data. Access values with square brackets or use get() when a missing key is possible.
+
+Why it matters:
+- This concept helps build a stronger foundation for writing clear Python code.
+- Understanding the basics well makes more advanced topics easier later.
+================================================================================
+
+Prompt: What is a list comprehension?
+--------------------------------------------------------------------------------
+Top sources:
+- Lists And List Comprehensions (score: 8)
+- For Loops Versus While Loops (score: 1)
+- Tuples (score: 1)
+
+Answer:
+A list stores an ordered collection of values. A list comprehension is a compact way to build a new list by iterating through an existing iterable and optionally filtering items. Use a normal loop when readability or multiple steps matter more than brevity.
+
+Why it matters:
+- Lists are one of the most common ways to store ordered data in Python.
+- List comprehensions are useful when building a new list from existing data in a compact way.
+================================================================================

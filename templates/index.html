@@ -77,18 +77,18 @@
               <div class="control-group">
                 <label for="answer_style">Answer style</label>
                 <select id="answer_style" name="answer_style">
-                  <option value="balanced" selected>Balanced</option>
-                  <option value="concise">Concise</option>
-                  <option value="explanatory">Explanatory</option>
+                  <option value="balanced" {% if answer_style == "balanced" %}selected{% endif %}>Balanced</option>
+                  <option value="concise" {% if answer_style == "concise" %}selected{% endif %}>Concise</option>
+                  <option value="explanatory" {% if answer_style == "explanatory" %}selected{% endif %}>Explanatory</option>
                 </select>
               </div>
 
               <div class="control-group">
                 <label for="top_k">Retrieved sources</label>
                 <select id="top_k" name="top_k">
-                  <option value="1">1 source</option>
-                  <option value="2">2 sources</option>
-                  <option value="3" selected>3 sources</option>
+                  <option value="1" {% if top_k == 1 %}selected{% endif %}>1 source</option>
+                  <option value="2" {% if top_k == 2 %}selected{% endif %}>2 sources</option>
+                  <option value="3" {% if top_k == 3 %}selected{% endif %}>3 sources</option>
                 </select>
               </div>
             </div>

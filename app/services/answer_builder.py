@@ -19,11 +19,29 @@ def get_teaching_points(primary_source: KnowledgeChunk) -> list[str]:
             "- Functions help organize code into reusable pieces instead of repeating the same logic.",
             "- They also make programs easier to test, debug, and understand.",
         ]
-    
+
+    if "class" in title or "object-oriented-programming" in category:
+        return [
+            "- Classes help group related data and behavior together, which makes larger programs easier to organize.",
+            "- They become especially useful when modeling real-world concepts or reusable components.",
+        ]
+
+    if "module" in title:
+        return [
+            "- Modules help split code into separate files so projects stay easier to navigate and maintain.",
+            "- Importing from modules also encourages reuse instead of rewriting the same logic in multiple places.",
+        ]
+        
     if "loop" in title or category == "control-flow":
         return [
             "- Loops are useful when the same kind of action needs to happen multiple times.",
             "- Choosing the right loop keeps code shorter and easier to read.",
+        ]
+
+    if "conditional" in title:
+        return [
+            "- Conditionals let code respond differently depending on what is true at runtime.",
+            "- They are one of the basic tools for adding decision-making to a program.",
         ]
         
     if "variable" in title:
@@ -37,16 +55,47 @@ def get_teaching_points(primary_source: KnowledgeChunk) -> list[str]:
             "- Dictionaries are helpful when values need to be looked up by a meaningful key.",
             "- They are one of the most common data structures used in real Python programs.",
         ]
+
+    if "string" in title:
+        return [
+            "- Strings are used constantly for user input, messages, file content, and general text processing.",
+            "- Learning string operations early makes many everyday Python tasks much easier.",
+        ]
+
+    if "tuple" in title:
+        return [
+            "- Tuples are useful when values belong together but should not be changed accidentally.",
+            "- They are often used for fixed groupings of related data, such as coordinates or return values.",
+        ]
+
+    if "set" in title:
+        return [
+            "- Sets are especially useful when uniqueness matters more than order.",
+            "- They also make membership checks efficient, which can be helpful in larger programs.",
+        ]
+
     if "list" in title:
-          return [
-              "- Lists are one of the most common ways to store ordered data in Python.",
-              "- List comprehensions are useful when building a new list from existing data in a compact way.",
-          ]
+        return [
+            "- Lists are one of the most common ways to store ordered data in Python.",
+            "- List comprehensions are useful when building a new list from existing data in a compact way.",
+        ]
+
+    if "file" in title:
+        return [
+            "- File handling is important whenever a program needs to save information or read existing data.",
+            "- Using tools like `with open(...)` helps manage files safely and avoids common resource bugs.",
+        ]
+
+    if "exception" in title or category == "debugging":
+        return [
+            "- Exceptions make errors visible at runtime, which helps developers find and fix problems more quickly.",
+            "- Handling exceptions carefully can keep a program from crashing when something unexpected happens.",
+        ]
 
     return [
-          "- This concept helps build a stronger foundation for writing clear Python code.",
-          "- Understanding the basics well makes more advanced topics easier later.",
-      ]
+        "- This concept helps build a stronger foundation for writing clear Python code.",
+        "- Understanding the basics well makes more advanced topics easier later.",
+    ]
 
 def build_answer(user_message: str, sources: list[RetrievalResult], answer_style: str = "balanced") -> str:
     # This is not a true language model yet. It is an orchestration layer that
